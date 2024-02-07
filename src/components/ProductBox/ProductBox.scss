@@ -1,7 +1,6 @@
 .ProductBox {
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
     border-radius: 5px;
@@ -27,13 +26,55 @@
 
 
     .img-container {
-
-
         img {
             max-width: 100%;
             max-height: 350px;
-
         }
-
     }
+
+    .button {
+
+        button {
+            border: 1px solid black;
+            background-color: transparent;
+            font-weight: 500;
+            border-radius: 50px;
+            padding: 0.3rem 0.6rem;
+            color: #000;
+            display: inline-flex;
+            gap: 0.2rem;
+
+            &:active {
+                position: relative;
+                transform: translateY(1px);
+                box-shadow: 0px 2px 3px rgba(68, 68, 68, 0.37);
+            }
+
+            &:hover {
+                background-color: black;
+                color: white;
+                cursor: pointer;
+
+                .itemBubble {
+                    color: black;
+                    background-color: white;
+                }
+            }
+
+
+            .itemBubble {
+                position: relative;
+                color: white;
+                background-color: black;
+                display: inline-block;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 50%;
+                font-size: 0.9rem;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+
 }
