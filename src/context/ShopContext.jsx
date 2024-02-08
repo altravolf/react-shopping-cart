@@ -11,14 +11,8 @@ function getAllIds() {
     return cart;
 }
 
-
-
 export const ShopContextProvider = (props) => {
-
-
-
     const [cartItems, setCartItems] = useState(getAllIds());
-
 
     const addToCart = (id) => {
         setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
@@ -30,12 +24,26 @@ export const ShopContextProvider = (props) => {
         })
     }
 
+    const inputToCart = (id, inputVal) => {
+        setCartItems((prev) => {
+            return { ...prev, [id]: inputVal }
+        })
+    }
 
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+        for (let i = 0; i < PRODUCTS.length; i++) {
+            PRODUCTS.map((el) => {
+                totalAmount += el.price * cartItems[el.id]
+                return totalAmount;
+            })
+            return totalAmount;
+        }
+    }
 
     return (
-        <ShopContext.Provider value={{ cartItems, addToCart }}>
+        <ShopContext.Provider value={{ cartItems, addToCart, removeToCart, inputToCart, getTotalCartAmount }}>
             {props.children}
         </ShopContext.Provider>
     );
-
 }
